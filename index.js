@@ -108,7 +108,7 @@ app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)
 app.use('/DeleteConsultant', ConsultantDeleteRouter)
 
-app.get('/api', (req, res)=>{
-    res.send("API Created Zahid")
+app.get('/', (req, res)=>{
+    res.send("Welcome to Main Page")
 })
 app.listen(PORT)

@@ -15,6 +15,7 @@ app.use(
     extended: true,
   })
 );
+const ConsDetails = require('./ScheemaModels/ConsultantScheema')
 const PORT = process.env.PORT || 350
 // app.use(`/uploads`, express.static('./uploads'))
 app.use(function (request, response, next) {
@@ -110,5 +111,14 @@ app.use('/DeleteConsultant', ConsultantDeleteRouter)
 
 app.get('/', (req, res)=>{
     res.send("Welcome to Main Page")
+})
+app.get('/getCon', async (req, resp) => {
+    let result = await ConsDetails.find()
+    if (result.length > 0) {
+        resp.send(result)
+    }
+    else {
+        resp.send({ result: "No Product Avalaibal" })
+    }
 })
 app.listen(PORT)

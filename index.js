@@ -108,10 +108,10 @@ app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)
 app.use('/DeleteConsultant', ConsultantDeleteRouter)
 
-app.get('/', (req, res)=>{
-    app.use(express.static(path.join(__dirname, '/client/build')))   
-res.sendFile(path.join(__dirname, '/client/build/index.html'))
-})
+// app.get('/', (req, res)=>{
+//     app.use(express.static(path.join(__dirname, '/client/build')))   
+// res.sendFile(path.join(__dirname, '/client/build/index.html'))
+// })
 
 app.listen(process.env.PORT ||350, ()=>{
  console.log("connected")

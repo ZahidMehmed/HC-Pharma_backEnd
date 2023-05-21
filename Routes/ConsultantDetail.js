@@ -25,7 +25,7 @@ const {upload} = require('./middleware')
 // }).single('image')
 
 const ConsultantPostRouter = express.Router()
-ConsultantPostRouter.post('', upload.single('ConPhoto'), async (req, resp) => {
+ConsultantPostRouter.post('/', upload.single('ConPhoto'), async (req, resp) => {
     try {
       const {
         ConName,
@@ -79,7 +79,7 @@ ConsultantPostRouter.post('', upload.single('ConPhoto'), async (req, resp) => {
   
 
 const ConsGetRouter = express.Router()
-ConsGetRouter.get('', async (req, resp) => {
+ConsGetRouter.get('/', async (req, resp) => {
     let result = await ConsDetails.find()
     if (result.length > 0) {
         resp.send(result)

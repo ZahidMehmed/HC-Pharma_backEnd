@@ -1,5 +1,6 @@
 const mongoose =  require('mongoose');
-mongoose.connect('mongodb+srv://chzahidm431:H287JxjS0nWkxh1q@cluster0.qo9iei3.mongodb.net/');
+mongoose.connect(`mongodb+srv://chzahidm431:7t6zdtzMX2CSQYN9@cluster0.fgehbfn.mongodb.net/`);
 const dotenv =  require('dotenv');
 dotenv.config();
 mongoose.set('strictQuery', false);
+//

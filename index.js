@@ -57,20 +57,6 @@ app.use('/eventsUpdate', eventPutRouterbyId)
 app.use('/eventsDelete', eventDeleteRouter)
 
 
-// const {
-//     LeavePostRouter,
-//     LeaveGetRouter,
-//     LeaveGetRouterById,
-//     LeavePutRouter, LeaveDeleteRouter,
-//     GetLeaveIdRouter
-// } = require('./Routes/Leaves')
-
-// app.use('/leave', LeavePostRouter)
-// app.use('/leave', LeaveGetRouter)
-// app.use('/leave', LeaveGetRouterById)
-// app.use('/leave', LeavePutRouter)
-// app.use('/leave', GetLeaveIdRouter)
-// app.use('/leaveDelete', LeaveDeleteRouter)
 
 const {
     AdminsPostRouter,

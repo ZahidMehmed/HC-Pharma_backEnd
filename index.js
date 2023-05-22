@@ -18,11 +18,11 @@ app.use(
 const ConsDetails = require('./ScheemaModels/ConsultantScheema')
 const PORT = process.env.PORT || 350
 // app.use(`/uploads`, express.static('./uploads'))
-app.use(function (request, response, next) {
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers",
-        "Origin, X-Rquested-With, Content-Type, Accept");
-    next();
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://hcp-harma.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
 });
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://hcp-harma.vercel.app');

@@ -120,5 +120,6 @@ app.get('/getCon', async (req, resp) => {
     else {
         resp.send({ result: "No Product Avalaibal" })
     }
+    resp.send({ result: "No Product Avalaibal" })
 })
 app.listen(PORT)

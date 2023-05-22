@@ -24,7 +24,12 @@ app.use(function (request, response, next) {
         "Origin, X-Rquested-With, Content-Type, Accept");
     next();
 });
-
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://hcp-harma.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
 const {
     EmployePostRouter,
     EmployeGetRouter,

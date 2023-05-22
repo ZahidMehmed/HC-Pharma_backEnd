@@ -7,12 +7,11 @@ const bodyParser = require('body-parser')
 app.use(`/uploads`, express.static('./uploads'))
 app.use(express.json())
 const cors = require('cors')
-app.use(cors(
-  {
-    origin:"https://hcp-harma.vercel.app",
-    methods:["GET", "POST", "PUT", "DELETE"]
-  }
-))
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://hcp-harma.vercel.app');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(

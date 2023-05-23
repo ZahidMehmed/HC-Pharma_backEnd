@@ -10,58 +10,58 @@ const fs = require('fs');
 //midleWare
 const {upload} = require('./middleware')
 
-const ConsultantPostRouter = express.Router()
-ConsultantPostRouter.post('/', cors(), upload.single('ConPhoto'), async (req, resp) => {
-    try {
-      const {
-        ConName,
-        email,
-        Password,
-        Contact,
-        SpecialList,
-        StartTme,
-        Discription,
-        Qualifications,
-        EndTim,
-        Mon,
-        Tue,
-        Wed,
-        Thu,
-        Fri,
-        Sat,
-        Sun,
-        Fee
-      } = req.body;
+// const ConsultantPostRouter = express.Router()
+// ConsultantPostRouter.post('/', cors(), upload.single('ConPhoto'), async (req, resp) => {
+//     try {
+//       const {
+//         ConName,
+//         email,
+//         Password,
+//         Contact,
+//         SpecialList,
+//         StartTme,
+//         Discription,
+//         Qualifications,
+//         EndTim,
+//         Mon,
+//         Tue,
+//         Wed,
+//         Thu,
+//         Fri,
+//         Sat,
+//         Sun,
+//         Fee
+//       } = req.body;
   
-      let ConPhoto = req.file?.filename;
-      let result = new ConsDetails({
-        ConPhoto,
-        ConName,
-        email,
-        Password,
-        Contact,
-        SpecialList,
-        StartTme,
-        Discription, // Convert the array to a string
-        Qualifications,
-        EndTim,
-        Mon,
-        Tue,
-        Wed,
-        Thu,
-        Fri,
-        Sat, // Convert the string to a boolean
-        Sun,
-        Fee
-      });
+//       let ConPhoto = req.file?.filename;
+//       let result = new ConsDetails({
+//         ConPhoto,
+//         ConName,
+//         email,
+//         Password,
+//         Contact,
+//         SpecialList,
+//         StartTme,
+//         Discription, // Convert the array to a string
+//         Qualifications,
+//         EndTim,
+//         Mon,
+//         Tue,
+//         Wed,
+//         Thu,
+//         Fri,
+//         Sat, // Convert the string to a boolean
+//         Sun,
+//         Fee
+//       });
   
-      result = await result.save();
-      resp.send(result);
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  });
+//       result = await result.save();
+//       resp.send(result);
+//       console.log(result);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   });
   
 
 const ConsGetRouter = express.Router()
@@ -205,7 +205,7 @@ ConsloginPostRouter.post('/', async (req, resp) => {
 })
 
 module.exports = {
-    ConsultantPostRouter,
+    // ConsultantPostRouter,
     ConsGetRouter,
     ConsultantDeleteRouter,
     ConsultantGetRouterbyID,

@@ -1,10 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const app  = express()
+const ConPostrouter = express.Router();
 const cors = require('cors');
-const ConsDetails = require('../../ScheemaModels/ConsultantScheema');
-const { upload } = require('../../Routes/middleware');
 
-router.post('/', cors(), upload.single('ConPhoto'), async (req, res) => {
+const ConsDetails = require('../../ScheemaModels/ConsultantScheema');
+ConPostrouter.use(cors());
+ConPostrouter.post('/', async (req, res) => {
   try {
     const {
       ConName,
@@ -56,4 +57,4 @@ router.post('/', cors(), upload.single('ConPhoto'), async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = ConPostrouter;

@@ -7,8 +7,8 @@ const ConsDetails = require('../ScheemaModels/ConsultantScheema')
 const multer = require('multer')
 const path = require('path');
 const fs = require('fs');
-app.use(express.json())
-app.use(cors())
+// app.use(express.json())
+// app.use(cors())
 //midleWare
 const {upload} = require('./middleware')
 // const storage = multer({
@@ -219,7 +219,7 @@ ConsloginPostRouter.post('/', async (req, resp) => {
 })
 
 module.exports = {
-    // ConsultantPostRouter,
+    ConsultantPostRouter,
     ConsGetRouter,
     ConsultantDeleteRouter,
     ConsultantGetRouterbyID,

@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 //midleWare
 const {upload} = require('../middleware')
-// const cors = require('cors');
+const cors = require('cors');
 const medicines = express.Router();
 medicines.use(cors());
 medicines.post('/', upload.single('TabPhoto'), async (req, resp) => {

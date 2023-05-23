@@ -7,22 +7,10 @@ const ConsDetails = require('../ScheemaModels/ConsultantScheema')
 const multer = require('multer')
 const path = require('path');
 const fs = require('fs');
-// app.use(express.json())
-// app.use(cors())
+app.use(express.json())
+app.use(cors())
 //midleWare
 const {upload} = require('./middleware')
-// const storage = multer({
-//     storage: multer.diskStorage({
-//         destination: function (req, file, callBack) {
-//             callBack(null, "./Uploads")
-//         },
-//         filename: function (req, file, callBack) {
-//             const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-//             const ext = path.extname(file.originalname);
-//             callBack(null, file.fieldname + '-' + uniqueSuffix + ext)
-//         }
-//     })
-// }).single('image')
 
 const ConsultantPostRouter = express.Router()
 ConsultantPostRouter.post('/', upload.single('ConPhoto'), async (req, resp) => {

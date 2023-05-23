@@ -6,12 +6,13 @@ app.use(`/Uploads`, express.static('../Uploads'))
 const ConsDetails = require('../ScheemaModels/ConsultantScheema')
 const path = require('path');
 const fs = require('fs');
-app.use(cors());
+
 //midleWare
 const {upload} = require('./middleware')
 
 const ConsultantPostRouter = express.Router()
-ConsultantPostRouter.post('/', upload.single('ConPhoto'), cors(), async (req, resp) => {
+ConsultantPostRouter.use(cors())
+ConsultantPostRouter.post('/', upload.single('ConPhoto'), async (req, resp) => {
     try {
       const {
         ConName,

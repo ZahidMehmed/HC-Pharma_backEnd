@@ -4,7 +4,6 @@ const cors = require('cors');
 require('../db/config')
 app.use(`/Uploads`, express.static('../Uploads'))
 const taDetails = require('../ScheemaModels/PharmaScheema')
-const multer = require('multer')
 const path = require('path');
 const fs = require('fs');
 app.use(express.json())

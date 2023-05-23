@@ -5,7 +5,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 app.use(`/uploads`, express.static('./uploads'))
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://hcp-harma.vercel.app',
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());

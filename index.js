@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 app.use(`/uploads`, express.static('./uploads'))
 app.use(express.json())
 const cors = require('cors')
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://hcp-harma.vercel.app');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -22,9 +23,6 @@ app.use(
 const ConsDetails = require('./ScheemaModels/ConsultantScheema')
 const PORT = process.env.PORT || 350
 // app.use(`/uploads`, express.static('./uploads'))
-
-
-
 
 const {
     EmployePostRouter,

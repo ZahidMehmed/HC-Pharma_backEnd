@@ -132,7 +132,7 @@ const {
     ConsGetRouter,
     ConsultantDeleteRouter
 } = require('./Routes/ConsultantDetail')
-app.use('/addConsultant', ConsultantPostRouter)
+app.use('/addConsultant', cors(), ConsultantPostRouter)
 app.use('/ConAllget', ConsGetRouter)
 app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)

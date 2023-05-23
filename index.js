@@ -16,58 +16,58 @@ app.use(
 app.use(`/uploads`, express.static('./uploads'))
 const PORT = process.env.PORT || 350
 
-const ConsDetails = require('./ScheemaModels/ConsultantScheema')
-app.post('/addConsultant',  async (req, resp) => {
-  try {
-    const {
-      ConName,
-      email,
-      Password,
-      Contact,
-      SpecialList,
-      StartTme,
-      Discription,
-      Qualifications,
-      EndTim,
-      Mon,
-      Tue,
-      Wed,
-      Thu,
-      Fri,
-      Sat,
-      Sun,
-      Fee
-    } = req.body;
+// const ConsDetails = require('../ScheemaModels/ConsultantScheema')
+// app.post('/addConsultant',  async (req, resp) => {
+//   try {
+//     const {
+//       ConName,
+//       email,
+//       Password,
+//       Contact,
+//       SpecialList,
+//       StartTme,
+//       Discription,
+//       Qualifications,
+//       EndTim,
+//       Mon,
+//       Tue,
+//       Wed,
+//       Thu,
+//       Fri,
+//       Sat,
+//       Sun,
+//       Fee
+//     } = req.body;
 
-    let ConPhoto = req.file?.filename;
-    let result = new ConsDetails({
-      ConPhoto,
-      ConName,
-      email,
-      Password,
-      Contact,
-      SpecialList,
-      StartTme,
-      Discription, // Convert the array to a string
-      Qualifications,
-      EndTim,
-      Mon,
-      Tue,
-      Wed,
-      Thu,
-      Fri,
-      Sat, // Convert the string to a boolean
-      Sun,
-      Fee
-    });
+//     let ConPhoto = req.file?.filename;
+//     let result = new ConsDetails({
+//       ConPhoto,
+//       ConName,
+//       email,
+//       Password,
+//       Contact,
+//       SpecialList,
+//       StartTme,
+//       Discription, // Convert the array to a string
+//       Qualifications,
+//       EndTim,
+//       Mon,
+//       Tue,
+//       Wed,
+//       Thu,
+//       Fri,
+//       Sat, // Convert the string to a boolean
+//       Sun,
+//       Fee
+//     });
 
-    result = await result.save();
-    resp.send(result);
-    console.log(result);
-  } catch (error) {
-    console.log(error);
-  }
-});
+//     result = await result.save();
+//     resp.send(result);
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 const {
     EmployePostRouter,
     EmployeGetRouter,
@@ -132,7 +132,7 @@ const {
     ConsGetRouter,
     ConsultantDeleteRouter
 } = require('./Routes/ConsultantDetail')
-// app.use('/addConsultant', ConsultantPostRouter)
+app.use('/addConsultant', ConsultantPostRouter)
 app.use('/ConAllget', ConsGetRouter)
 app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)

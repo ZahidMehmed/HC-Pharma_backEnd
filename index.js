@@ -79,7 +79,7 @@ const {
     ConsGetRouter,
     ConsultantDeleteRouter
 } = require('./Routes/ConsultantDetail')
-// app.use('/addConsultant', cors(), ConsultantPostRouter)
+app.use('/addConsultant', ConsultantPostRouter)
 app.use('/ConAllget', ConsGetRouter)
 app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)
@@ -87,57 +87,57 @@ app.use('/DeleteConsultant', ConsultantDeleteRouter)
 
 
 const ConsDetails = require('./ScheemaModels/ConsultantScheema')
-app.post('/addConsultant',  async (req, resp) => {
-  try {
-    const {
-      ConName,
-      email,
-      Password,
-      Contact,
-      SpecialList,
-      StartTme,
-      Discription,
-      Qualifications,
-      EndTim,
-      Mon,
-      Tue,
-      Wed,
-      Thu,
-      Fri,
-      Sat,
-      Sun,
-      Fee
-    } = req.body;
+// app.post('/addConsultant',  async (req, resp) => {
+//   try {
+//     const {
+//       ConName,
+//       email,
+//       Password,
+//       Contact,
+//       SpecialList,
+//       StartTme,
+//       Discription,
+//       Qualifications,
+//       EndTim,
+//       Mon,
+//       Tue,
+//       Wed,
+//       Thu,
+//       Fri,
+//       Sat,
+//       Sun,
+//       Fee
+//     } = req.body;
 
-    let ConPhoto = req.file?.filename;
-    let result = new ConsDetails({
-      ConPhoto,
-      ConName,
-      email,
-      Password,
-      Contact,
-      SpecialList,
-      StartTme,
-      Discription, // Convert the array to a string
-      Qualifications,
-      EndTim,
-      Mon,
-      Tue,
-      Wed,
-      Thu,
-      Fri,
-      Sat, // Convert the string to a boolean
-      Sun,
-      Fee
-    });
+//     let ConPhoto = req.file?.filename;
+//     let result = new ConsDetails({
+//       ConPhoto,
+//       ConName,
+//       email,
+//       Password,
+//       Contact,
+//       SpecialList,
+//       StartTme,
+//       Discription, // Convert the array to a string
+//       Qualifications,
+//       EndTim,
+//       Mon,
+//       Tue,
+//       Wed,
+//       Thu,
+//       Fri,
+//       Sat, // Convert the string to a boolean
+//       Sun,
+//       Fee
+//     });
 
-    result = await result.save();
-    resp.send(result);
-    console.log(result);
-  } catch (error) {
-    console.log(error);
-  }
-});
+//     result = await result.save();
+//     resp.send(result);
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 app.get('/', (req, res)=>{
     res.send("Welcome to Main Page")

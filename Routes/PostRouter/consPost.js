@@ -2,7 +2,7 @@ const express = require('express');
 const app  = express()
 const ConPostrouter = express.Router();
 const cors = require('cors');
-
+app.use(`/Uploads`, express.static('../../Uploads'))
 const ConsDetails = require('../../ScheemaModels/ConsultantScheema');
 ConPostrouter.use(cors());
 ConPostrouter.post('/', async (req, res) => {

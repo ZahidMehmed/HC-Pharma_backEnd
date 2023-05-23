@@ -15,7 +15,8 @@ const {
     EmployePutRouterbyId,
     EmploginPostRouter
 } = require('./Routes/PharmaList')
-app.use('/PharmaList', EmployePostRouter)
+const PharmaPostRouter = require('./Routes/PostRouter/PharmaPost')
+app.use('/PharmaList', PharmaPostRouter)
 app.use(`/EmployeeList_Get`, EmployeGetRouter)
 app.use(`/EmployeeList_Delete`, EmployeDeleteRouter)
 app.use(`/EmployeeListById`, EmployeGetRouterbyID)
@@ -77,6 +78,7 @@ app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)
 app.use('/DeleteConsultant', ConsultantDeleteRouter)
 const ConPostrouter = require('./Routes/PostRouter/consPost');
+const PharmaPostRouter = require('./Routes/PostRouter/PharmaPost');
 app.use('/addConsultant',ConPostrouter)
 
 app.get('/', (req, res)=>{

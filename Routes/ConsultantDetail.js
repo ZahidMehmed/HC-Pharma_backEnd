@@ -219,7 +219,7 @@ ConsloginPostRouter.post('/', async (req, resp) => {
 })
 
 module.exports = {
-    ConsultantPostRouter,
+    // ConsultantPostRouter,
     ConsGetRouter,
     ConsultantDeleteRouter,
     ConsultantGetRouterbyID,

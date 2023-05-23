@@ -1,33 +1,19 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 require('../db/config')
 app.use(`/Uploads`, express.static('../Uploads'))
 const taDetails = require('../ScheemaModels/PharmaScheema')
 const multer = require('multer')
 const path = require('path');
 const fs = require('fs');
-app.use(express.json())
-app.use(cors())
+
 //midleWare
 const {upload} = require('./middleware')
-// const storage = multer({
-//     storage: multer.diskStorage({
-//         destination: function (req, file, callBack) {
-//             callBack(null, "./Uploads")
-//         },
-//         filename: function (req, file, callBack) {
-//             const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-//             const ext = path.extname(file.originalname);
-//             callBack(null, file.fieldname + '-' + uniqueSuffix + ext)
-//         }
-//     })
-// }).single('image')
+
 
 const EmployePostRouter = express.Router()
 EmployePostRouter.post('/', upload.single('TabPhoto'), async (req, resp) => {
     try {
-        
     const {
           brandName,
           Strength,

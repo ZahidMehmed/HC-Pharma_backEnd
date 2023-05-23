@@ -5,9 +5,6 @@ jwt = require('jsonwebtoken');
 jwtKey = 'vcr@134'
 const bodyParser = require('body-parser')
 app.use(`/uploads`, express.static('./uploads'))
-const cors = require('cors');
-app.use(cors());
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,13 +13,10 @@ app.use(
     extended: true,
   })
 );
-const ConsDetails = require('./ScheemaModels/ConsultantScheema')
-const PORT = process.env.PORT || 350
-
-
-  
+const cors = require('cors');
+app.use(cors());
 app.use(`/uploads`, express.static('./uploads'))
-
+const PORT = process.env.PORT || 350
 const {
     EmployePostRouter,
     EmployeGetRouter,
@@ -96,14 +90,5 @@ app.use('/DeleteConsultant', ConsultantDeleteRouter)
 app.get('/', (req, res)=>{
     res.send("Welcome to Main Page")
 })
-// app.get('/getCon', async (req, resp) => {
-//     let result = await ConsDetails.find()
-//     if (result.length > 0) {
-//         resp.send(result)
-//     }
-//     else {
-//         resp.send({ result: "No Product Avalaibal" })
-//     }
-//     resp.send({ result: "No Product Avalaibal" })
-// })
+
 app.listen(PORT)

@@ -1,15 +1,10 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 require('../db/config')
 app.use(`/Uploads`, express.static('../Uploads'))
 const TabDetail = require('../ScheemaModels/PharmaScheema')
 const EmpAttend = require('../ScheemaModels/EmployeeAttendSchema')
-const multer = require('multer')
-const path = require('path');
 const fs = require('fs');
-app.use(express.json())
-app.use(cors())
 
 
 

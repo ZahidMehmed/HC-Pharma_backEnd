@@ -6,7 +6,8 @@ app.use(`/Uploads`, express.static('../Uploads'))
 const ConsDetails = require('../ScheemaModels/ConsultantScheema')
 const path = require('path');
 const fs = require('fs');
-
+app.use(express.json())
+app.use(cors())
 //midleWare
 const {upload} = require('./middleware')
 

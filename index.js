@@ -8,21 +8,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 350
 
 const {
-  
+    EmployePostRouter,
     EmployeGetRouter,
     EmployeDeleteRouter,
     EmployeGetRouterbyID,
     EmployePutRouterbyId,
     EmploginPostRouter
 } = require('./Routes/PharmaList')
-
+app.use('/PharmaList', EmployePostRouter)
 app.use(`/EmployeeList_Get`, EmployeGetRouter)
 app.use(`/EmployeeList_Delete`, EmployeDeleteRouter)
 app.use(`/EmployeeListById`, EmployeGetRouterbyID)
 app.use(`/EmployeeList_Updatedy_Id`, EmployePutRouterbyId)
 app.use('/EmpLogin', EmploginPostRouter)
-const medicines = require('./Routes/PostRouter/PharmaPost')
-app.use('/PharmaList', medicines)
+
 
 
 
@@ -77,8 +76,10 @@ app.use('/ConAllget', ConsGetRouter)
 app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)
 app.use('/DeleteConsultant', ConsultantDeleteRouter)
-const ConPostrouter = require('./Routes/PostRouter/consPost');
-app.use('/addConsultant',ConPostrouter)
+
+
+// const ConPostrouter = require('./Routes/PostRouter/consPost');
+// app.use('/addConsultant',ConPostrouter)
 
 app.get('/', (req, res)=>{
     res.send("Welcome to Main Page")

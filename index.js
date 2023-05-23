@@ -76,8 +76,6 @@ app.use('/ConAllget', ConsGetRouter)
 app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)
 app.use('/DeleteConsultant', ConsultantDeleteRouter)
-
-const {} = require('./Routes/PostRouter/consPost');
 const ConPostrouter = require('./Routes/PostRouter/consPost');
 app.use('/addConsultant',ConPostrouter)
 

@@ -3,15 +3,15 @@ const app = express();
 require('../db/config')
 app.use(`/Uploads`, express.static('../Uploads'))
 const taDetails = require('../ScheemaModels/PharmaScheema')
-const multer = require('multer')
 const path = require('path');
 const fs = require('fs');
-
+const cors = require('cors');
 //midleWare
 const {upload} = require('./middleware')
 
 
 const EmployePostRouter = express.Router()
+EmploginPostRouter.use(cors());
 EmployePostRouter.post('/', upload.single('TabPhoto'), async (req, resp) => {
     try {
     const {

@@ -7,8 +7,7 @@ const ConsDetails = require('../ScheemaModels/ConsultantScheema')
 const multer = require('multer')
 const path = require('path');
 const fs = require('fs');
-app.use(express.json())
-app.use(cors())
+
 //midleWare
 const {upload} = require('./middleware')
 

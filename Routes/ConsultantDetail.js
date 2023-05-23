@@ -1,18 +1,18 @@
 const express = require('express');
-const app = express();
+const ConsultantApp = express();
 const cors = require('cors');
 require('../db/config')
-app.use(`/Uploads`, express.static('../Uploads'))
+ConsultantApp.use(`/Uploads`, express.static('../Uploads'))
 const ConsDetails = require('../ScheemaModels/ConsultantScheema')
 const path = require('path');
 const fs = require('fs');
-app.use(express.json())
-app.use(cors())
+ConsultantApp.use(express.json())
+ConsultantApp.use(cors())
 //midleWare
 const {upload} = require('./middleware')
 
 const ConsultantPostRouter = express.Router()
-ConsultantPostRouter.post('/', cors(), upload.single('ConPhoto'), async (req, resp) => {
+ConsultantPostRouter.post('/addConsultant', cors(), upload.single('ConPhoto'), async (req, resp) => {
     try {
       const {
         ConName,
@@ -66,7 +66,7 @@ ConsultantPostRouter.post('/', cors(), upload.single('ConPhoto'), async (req, re
   
 
 const ConsGetRouter = express.Router()
-ConsGetRouter.get('/', async (req, resp) => {
+ConsGetRouter.get('/ConAllget', async (req, resp) => {
     let result = await ConsDetails.find()
     if (result.length > 0) {
         resp.send(result)
@@ -78,7 +78,7 @@ ConsGetRouter.get('/', async (req, resp) => {
 
 
 const ConsultantDeleteRouter = express.Router()
- ConsultantDeleteRouter.delete('/:id', async (req, resp) => {
+ ConsultantDeleteRouter.delete('/DeleteConsultant/:id', async (req, resp) => {
     const Consultant = await ConsDetails.findById(req.params.id);
     if (!Consultant) {
         return resp.status(404).send('Product not found');
@@ -100,7 +100,7 @@ const ConsultantDeleteRouter = express.Router()
 });
 
 const ConsultantGetRouterbyID = express.Router()
-ConsultantGetRouterbyID.get('/:id', async(req, res)=>{
+ConsultantGetRouterbyID.get('/FetchConsultantId/:id', async(req, res)=>{
     try {
         
         let result = await ConsDetails.findOne({_id: req.params.id });
@@ -115,7 +115,7 @@ ConsultantGetRouterbyID.get('/:id', async(req, res)=>{
     }
 })
 const ConsultantPutRouterbyId = express.Router()
-ConsultantPutRouterbyId.put('/:id',  upload.single('ConPhoto'),async (req, res) => {
+ConsultantPutRouterbyId.put('/UpdateConsultant/:id',  upload.single('ConPhoto'),async (req, res) => {
     const { 
         ConName,
         email,
@@ -204,12 +204,10 @@ ConsloginPostRouter.post('/', async (req, resp) => {
         resp.status(401).send({ message: 'Invalid email or password' });
     }
 })
-
-module.exports = {
-    ConsultantPostRouter,
-    ConsGetRouter,
-    ConsultantDeleteRouter,
-    ConsultantGetRouterbyID,
-    ConsultantPutRouterbyId,
-    ConsloginPostRouter
-}
+ConsultantApp.use(ConsultantPostRouter);
+ConsultantApp.use(ConsGetRouter);
+ConsultantApp.use(ConsultantDeleteRouter);
+ConsultantApp.use(ConsultantGetRouterbyID);
+ConsultantApp.use(ConsultantPutRouterbyId);
+ConsultantApp.use(ConsloginPostRouter);
+module.exports =ConsultantApp

@@ -23,6 +23,9 @@ app.use(`/EmployeeListById`, EmployeGetRouterbyID)
 app.use(`/EmployeeList_Updatedy_Id`, EmployePutRouterbyId)
 app.use('/EmpLogin', EmploginPostRouter)
 
+// const ConsultantApp = require('./Routes/ConsultantDetail')
+// app.use('', ConsultantApp)
+
 
 
 
@@ -65,20 +68,21 @@ app.use('/user', UserPostRouter)
 app.use('/userLogin', loginPostRouter)
 app.use('/userGetId', UserGetRouterById)
 
-const {
-    ConsultantPostRouter,
-    ConsultantPutRouterbyId,
-    ConsultantGetRouterbyID,
-    ConsGetRouter,
-    ConsultantDeleteRouter
-} = require('./Routes/ConsultantDetail')
-app.use('/addConsultant', ConsultantPostRouter)
-app.use('/ConAllget', ConsGetRouter)
-app.use('/FetchConsultantId', ConsultantGetRouterbyID)
-app.use('/UpdateConsultant', ConsultantPutRouterbyId)
-app.use('/DeleteConsultant', ConsultantDeleteRouter)
+// const {
+//     ConsultantPostRouter,
+//     ConsultantPutRouterbyId,
+//     ConsultantGetRouterbyID,
+//     ConsGetRouter,
+//     ConsultantDeleteRouter
+// } = require('./Routes/ConsultantDetail')
+// app.use('/addConsultant', ConsultantPostRouter)
+// app.use('/ConAllget', ConsGetRouter)
+// app.use('/FetchConsultantId', ConsultantGetRouterbyID)
+// app.use('/UpdateConsultant', ConsultantPutRouterbyId)
+// app.use('/DeleteConsultant', ConsultantDeleteRouter)
 
-
+const ConsultantApp =  require('./Routes/ConsultantDetail')
+app.use('', ConsultantApp)
 // const ConPostrouter = require('./Routes/PostRouter/consPost');
 // app.use('/addConsultant',ConPostrouter)
 

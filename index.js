@@ -1,22 +1,20 @@
 const express = require('express');
 require('./db/config')
 const app = express();
-jwt = require('jsonwebtoken');
-jwtKey = 'vcr@134'
+const cors = require('cors');
 const bodyParser = require('body-parser')
 app.use(`/uploads`, express.static('./uploads'))
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-const cors = require('cors');
 app.use(cors());
+app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(`/uploads`, express.static('./uploads'))
 const PORT = process.env.PORT || 350
+
+
+
 const {
     EmployePostRouter,
     EmployeGetRouter,

@@ -6,13 +6,8 @@ jwtKey = 'vcr@134'
 const bodyParser = require('body-parser')
 app.use(`/uploads`, express.static('./uploads'))
 app.use(express.json())
-const cors = require('cors')
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://hcp-harma.vercel.app');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+const cors = require('cors');
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
@@ -22,8 +17,6 @@ app.use(
 );
 const ConsDetails = require('./ScheemaModels/ConsultantScheema')
 const PORT = process.env.PORT || 350
-
-
 
 app.post('/addConsultant',  async (req, resp) => {
     try {
@@ -152,14 +145,14 @@ app.use('/DeleteConsultant', ConsultantDeleteRouter)
 app.get('/', (req, res)=>{
     res.send("Welcome to Main Page")
 })
-app.get('/getCon', async (req, resp) => {
-    let result = await ConsDetails.find()
-    if (result.length > 0) {
-        resp.send(result)
-    }
-    else {
-        resp.send({ result: "No Product Avalaibal" })
-    }
-    resp.send({ result: "No Product Avalaibal" })
-})
+// app.get('/getCon', async (req, resp) => {
+//     let result = await ConsDetails.find()
+//     if (result.length > 0) {
+//         resp.send(result)
+//     }
+//     else {
+//         resp.send({ result: "No Product Avalaibal" })
+//     }
+//     resp.send({ result: "No Product Avalaibal" })
+// })
 app.listen(PORT)

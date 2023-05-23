@@ -5,22 +5,15 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 app.use(`/uploads`, express.static('./uploads'))
 
-const corsOptions = {
-  origin: 'https://hcp-harma.vercel.app',
-};
-
-app.use(cors(corsOptions));
-app.use(bodyParser.json());
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(`/uploads`, express.static('./uploads'))
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://hcp-harma.vercel.app');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
 const PORT = process.env.PORT || 350
 
 
@@ -83,13 +76,13 @@ app.use('/userLogin', loginPostRouter)
 app.use('/userGetId', UserGetRouterById)
 
 const {
-    ConsultantPostRouter,
+    // ConsultantPostRouter,
     ConsultantPutRouterbyId,
     ConsultantGetRouterbyID,
     ConsGetRouter,
     ConsultantDeleteRouter
 } = require('./Routes/ConsultantDetail')
-app.use('/addConsultant', ConsultantPostRouter)
+// app.use('/addConsultant', ConsultantPostRouter)
 app.use('/ConAllget', ConsGetRouter)
 app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)
@@ -98,5 +91,57 @@ app.use('/DeleteConsultant', ConsultantDeleteRouter)
 app.get('/', (req, res)=>{
     res.send("Welcome to Main Page")
 })
+const ConsDetails = require('./Routes/ConsultantDetail')
+app.post('/addConsultant', async (req, resp) => {
+  try {
+    const {
+      ConName,
+      email,
+      Password,
+      Contact,
+      SpecialList,
+      StartTme,
+      Discription,
+      Qualifications,
+      EndTim,
+      Mon,
+      Tue,
+      Wed,
+      Thu,
+      Fri,
+      Sat,
+      Sun,
+      Fee
+    } = req.body;
+
+    let ConPhoto = req.file?.filename;
+    let result = new ConsDetails({
+      ConPhoto,
+      ConName,
+      email,
+      Password,
+      Contact,
+      SpecialList,
+      StartTme,
+      Discription, // Convert the array to a string
+      Qualifications,
+      EndTim,
+      Mon,
+      Tue,
+      Wed,
+      Thu,
+      Fri,
+      Sat, // Convert the string to a boolean
+      Sun,
+      Fee
+    });
+
+    result = await result.save();
+    resp.send(result);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.listen(PORT)

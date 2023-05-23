@@ -1,18 +1,16 @@
 const express = require('express');
-const app = express();
-require('../db/config')
+require('../../db/config')
+const app = express()
 app.use(`/Uploads`, express.static('../../Uploads'))
 const taDetails = require('../../ScheemaModels/PharmaScheema')
 const path = require('path');
 const fs = require('fs');
-const cors = require('cors');
 //midleWare
-const {upload} = require('./middleware')
-
-
-const PharmaPostRouter = express.Router()
-PharmaPostRouter.use(cors());
-PharmaPostRouter.post('/', upload.single('TabPhoto'), async (req, resp) => {
+const {upload} = require('../middleware')
+const cors = require('cors');
+const medicines = express.Router();
+medicines.use(cors());
+medicines.post('/', upload.single('TabPhoto'), async (req, resp) => {
     try {
     const {
           brandName,
@@ -41,4 +39,4 @@ PharmaPostRouter.post('/', upload.single('TabPhoto'), async (req, resp) => {
         console.log(error)
 }
 })
-module.exports = PharmaPostRouter
+module.exports = medicines

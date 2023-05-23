@@ -8,21 +8,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 350
 
 const {
-    EmployePostRouter,
+  
     EmployeGetRouter,
     EmployeDeleteRouter,
     EmployeGetRouterbyID,
     EmployePutRouterbyId,
     EmploginPostRouter
 } = require('./Routes/PharmaList')
-const PharmaPostRouter = require('./Routes/PostRouter/PharmaPost')
-app.use('/PharmaList', PharmaPostRouter)
+
 app.use(`/EmployeeList_Get`, EmployeGetRouter)
 app.use(`/EmployeeList_Delete`, EmployeDeleteRouter)
 app.use(`/EmployeeListById`, EmployeGetRouterbyID)
 app.use(`/EmployeeList_Updatedy_Id`, EmployePutRouterbyId)
 app.use('/EmpLogin', EmploginPostRouter)
-
+const medicines = require('./Routes/PostRouter/PharmaPost')
+app.use('/PharmaList', medicines)
 
 
 
@@ -78,7 +78,6 @@ app.use('/FetchConsultantId', ConsultantGetRouterbyID)
 app.use('/UpdateConsultant', ConsultantPutRouterbyId)
 app.use('/DeleteConsultant', ConsultantDeleteRouter)
 const ConPostrouter = require('./Routes/PostRouter/consPost');
-const PharmaPostRouter = require('./Routes/PostRouter/PharmaPost');
 app.use('/addConsultant',ConPostrouter)
 
 app.get('/', (req, res)=>{

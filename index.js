@@ -4,9 +4,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser')
 app.use(express.json())
-app.use(cors(
-  
-))
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 350
 
@@ -70,21 +68,21 @@ app.use('/user', UserPostRouter)
 app.use('/userLogin', loginPostRouter)
 app.use('/userGetId', UserGetRouterById)
 
-// const {
-//     ConsultantPostRouter,
-//     ConsultantPutRouterbyId,
-//     ConsultantGetRouterbyID,
-//     ConsGetRouter,
-//     ConsultantDeleteRouter
-// } = require('./Routes/ConsultantDetail')
-// app.use('/addConsultant', ConsultantPostRouter)
-// app.use('/ConAllget', ConsGetRouter)
-// app.use('/FetchConsultantId', ConsultantGetRouterbyID)
-// app.use('/UpdateConsultant', ConsultantPutRouterbyId)
-// app.use('/DeleteConsultant', ConsultantDeleteRouter)
+const {
+    ConsultantPostRouter,
+    ConsultantPutRouterbyId,
+    ConsultantGetRouterbyID,
+    ConsGetRouter,
+    ConsultantDeleteRouter
+} = require('./Routes/ConsultantDetail')
+app.use('/addConsultant', ConsultantPostRouter)
+app.use('/ConAllget', ConsGetRouter)
+app.use('/FetchConsultantId', ConsultantGetRouterbyID)
+app.use('/UpdateConsultant', ConsultantPutRouterbyId)
+app.use('/DeleteConsultant', ConsultantDeleteRouter)
 
-const ConsultantApp =  require('./Routes/ConsultantDetail')
-app.use('', ConsultantApp)
+// const ConsultantApp =  require('./Routes/ConsultantDetail')
+// app.use('', ConsultantApp)
 
 
 app.get('/', (req, res)=>{

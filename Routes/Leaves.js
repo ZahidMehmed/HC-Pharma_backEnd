@@ -1,14 +1,6 @@
 const express = require('express');
-const app = express();
-const cors = require('cors');
 require('../db/config')
 const Leave = require('../ScheemaModels/LeaveSchema')
-const path = require('path');
-const fs = require('fs');
-
-app.use(express.json())
-app.use(cors())
-
 const LeavePostRouter = express.Router()
 LeavePostRouter.post('/', async (req, res) => {
     const {email, fullName, leaveFor, duration, date, fromDate, toDate, reason } = req.body;

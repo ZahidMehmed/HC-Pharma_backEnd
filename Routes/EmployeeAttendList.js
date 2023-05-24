@@ -5,10 +5,6 @@ app.use(`/Uploads`, express.static('../Uploads'))
 const TabDetail = require('../ScheemaModels/PharmaScheema')
 const EmpAttend = require('../ScheemaModels/EmployeeAttendSchema')
 const fs = require('fs');
-
-
-
-
 const CronJob = require('cron').CronJob;
 
 const moment = require('moment');

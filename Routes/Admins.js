@@ -1,12 +1,9 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 require('../db/config')
 const jwt = require('jsonwebtoken')
 const jwtKey = 'ssvr'
 const Admins = require('../ScheemaModels/AdminsScheema')
-app.use(express.json())
-app.use(cors())
 const AdminsPostRouter = express.Router()
 AdminsPostRouter.post('/', async (req, resp) => {
   try {

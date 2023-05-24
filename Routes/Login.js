@@ -1,10 +1,6 @@
 const express = require('express');
-const app = express();
-const cors = require('cors');
 require('../db/config')
 const users = require('../ScheemaModels/LogInSchema')
-app.use(express.json())
-app.use(cors())
 
 const jwt = require('jsonwebtoken')
 const jwtKey = 'ssvr'

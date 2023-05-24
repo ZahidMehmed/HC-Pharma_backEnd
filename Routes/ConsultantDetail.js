@@ -16,7 +16,7 @@ ConsultantPostRouter.post('/', upload.single('ConPhoto'), async (req, resp) => {
         Contact,
         SpecialList,
         StartTme,
-        Discription,
+        Description,
         Qualifications,
         EndTim,
         Mon,
@@ -38,7 +38,7 @@ ConsultantPostRouter.post('/', upload.single('ConPhoto'), async (req, resp) => {
         Contact,
         SpecialList,
         StartTme,
-        Discription, // Convert the array to a string
+        Description, // Convert the array to a string
         Qualifications,
         EndTim,
         Mon,

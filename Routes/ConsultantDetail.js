@@ -1,13 +1,12 @@
 const express = require('express');
-const ConsultantApp = express();
+const Consultapp = express();
 const cors = require('cors');
 require('../db/config')
-ConsultantApp.use(`/Uploads`, express.static('../Uploads'))
+Consultapp.use(`/Uploads`, express.static('../Uploads'))
 const ConsDetails = require('../ScheemaModels/ConsultantScheema')
 const path = require('path');
 const fs = require('fs');
-ConsultantApp.use(express.json())
-ConsultantApp.use(cors())
+
 //midleWare
 const {upload} = require('./middleware')
 
@@ -204,10 +203,11 @@ ConsloginPostRouter.post('/', async (req, resp) => {
         resp.status(401).send({ message: 'Invalid email or password' });
     }
 })
-ConsultantApp.use(ConsultantPostRouter);
-ConsultantApp.use(ConsGetRouter);
-ConsultantApp.use(ConsultantDeleteRouter);
-ConsultantApp.use(ConsultantGetRouterbyID);
-ConsultantApp.use(ConsultantPutRouterbyId);
-ConsultantApp.use(ConsloginPostRouter);
-module.exports =ConsultantApp
+
+Consultapp.use(ConsultantPostRouter);
+Consultapp.use(ConsGetRouter);
+Consultapp.use(ConsultantDeleteRouter);
+Consultapp.use(ConsultantGetRouterbyID);
+Consultapp.use(ConsultantPutRouterbyId);
+
+module.exports =Consultapp

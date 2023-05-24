@@ -8,7 +8,6 @@ const AdminsPostRouter = express.Router()
 AdminsPostRouter.post('/', async (req, resp) => {
   try {
     const { fullName, email, password, conPassword, contact } = req.body
-
     let result = new Admins({ fullName, email, password, conPassword, contact });
     result = await result.save();
     resp.send(result)

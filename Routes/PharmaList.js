@@ -1,46 +1,46 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 require('../db/config')
 app.use(`/Uploads`, express.static('../Uploads'))
-const taDetails = require('../ScheemaModels/PharmaScheema')
+const phaDetails = require('../ScheemaModels/PharmaScheema')
 const path = require('path');
 const fs = require('fs');
-const {upload} = require('./middleware')
+const { upload } = require('./middleware')
 const EmployePostRouter = express.Router()
 EmployePostRouter.post('/', upload.single('TabPhoto'), async (req, resp) => {
     try {
-    const {
-          brandName,
-          Strength,
-          Ingredients,
-          Description,
-          DosageForm,
-          Discount,
-          Price         
+        const {
+            brandName,
+            Strength,
+            Ingredients,
+            Description,
+            DosageForm,
+            Discount,
+            Price
         } = req.body
-    let TabPhoto = req.file?.filename
+        let TabPhoto = req.file?.filename
 
-    let result = new taDetails({ 
-        TabPhoto,
-        brandName,
-        Strength,
-        Ingredients,
-        Description,
-        DosageForm,
-        Discount,
-        Price});
-    result = await result.save();
-    resp.send(result)
-    console.log(result)
-} catch (error) {
+        let result = new phaDetails({
+            TabPhoto,
+            brandName,
+            Strength,
+            Ingredients,
+            Description,
+            DosageForm,
+            Discount,
+            Price
+        });
+        result = await result.save();
+        resp.send(result)
+        console.log(result)
+    } catch (error) {
         console.log(error)
-}
+    }
 })
 
 const EmployeGetRouter = express.Router()
 EmployeGetRouter.get('/', async (req, resp) => {
-    let result = await taDetails.find()
+    let result = await phaDetails.find()
     if (result.length > 0) {
         resp.send(result)
     }
@@ -51,13 +51,13 @@ EmployeGetRouter.get('/', async (req, resp) => {
 
 
 const EmployeDeleteRouter = express.Router()
- EmployeDeleteRouter.delete('/:id', async (req, resp) => {
-    const employee = await taDetails.findById(req.params.id);
+EmployeDeleteRouter.delete('/:id', async (req, resp) => {
+    const employee = await phaDetails.findById(req.params.id);
     if (!employee) {
         return resp.status(404).send('Product not found');
     }
 
-    const result = await taDetails.deleteOne({ _id: req.params.id });
+    const result = await phaDetails.deleteOne({ _id: req.params.id });
     resp.send(result);
 
     // Delete the image file from the folder
@@ -73,10 +73,10 @@ const EmployeDeleteRouter = express.Router()
 });
 
 const EmployeGetRouterbyID = express.Router()
-EmployeGetRouterbyID.get('/:id', async(req, res)=>{
+EmployeGetRouterbyID.get('/:id', async (req, res) => {
     try {
-        
-        let result = await taDetails.findOne({_id: req.params.id });
+
+        let result = await phaDetails.findOne({ _id: req.params.id });
         if (result) {
             res.send(result)
         }
@@ -84,7 +84,7 @@ EmployeGetRouterbyID.get('/:id', async(req, res)=>{
             res.send("No result found")
         }
     } catch (error) {
-          
+
     }
 })
 
@@ -92,20 +92,20 @@ EmployeGetRouterbyID.get('/:id', async(req, res)=>{
 
 
 const EmployePutRouterbyId = express.Router()
-EmployePutRouterbyId.put('/:id',  upload.single('TabPhoto'),async (req, res) => {
-    const { 
+EmployePutRouterbyId.put('/:id', upload.single('TabPhoto'), async (req, res) => {
+    const {
         brandName,
         Strength,
         Ingredients,
         Description,
         DosageForm,
         Discount,
-        Price  
+        Price
     } = req.body;
     let TabPhoto = req.file?.filename
 
     try {
-        let employee = await taDetails.findById(req.params.id);
+        let employee = await phaDetails.findById(req.params.id);
         if (!employee) {
             return res.status(404).send('Employee not found');
         }
@@ -125,15 +125,15 @@ EmployePutRouterbyId.put('/:id',  upload.single('TabPhoto'),async (req, res) => 
             TabPhoto = employee.TabPhoto;
         }
 
-        const result = await taDetails.findByIdAndUpdate(req.params.id, {
-          TabPhoto, 
-          brandName,
-          Strength,
-          Ingredients,
-          Description,
-          DosageForm,
-          Discount,
-          Price  
+        const result = await phaDetails.findByIdAndUpdate(req.params.id, {
+            TabPhoto,
+            brandName,
+            Strength,
+            Ingredients,
+            Description,
+            DosageForm,
+            Discount,
+            Price
         }, { new: true });
 
         res.send(result);
@@ -146,11 +146,11 @@ EmployePutRouterbyId.put('/:id',  upload.single('TabPhoto'),async (req, res) => 
 const EmploginPostRouter = express.Router()
 EmploginPostRouter.post('/', async (req, resp) => {
 
-     if (req.body.password && req.body.email) {
+    if (req.body.password && req.body.email) {
 
-        const user = await taDetails.findOne(req.body).select('-password')
+        const user = await phaDetails.findOne(req.body).select('-password')
         if (user) {
-           
+
             resp.send(user)
         }
         else {

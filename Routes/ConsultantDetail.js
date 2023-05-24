@@ -1,15 +1,11 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 require('../db/config')
 app.use(`/Uploads`, express.static('../Uploads'))
 const ConsDetails = require('../ScheemaModels/ConsultantScheema')
 const path = require('path');
 const fs = require('fs');
-
-//midleWare
-const {upload} = require('./middleware')
-
+const { upload } = require('./middleware')
 const ConsultantPostRouter = express.Router()
 ConsultantPostRouter.post('/', upload.single('ConPhoto'), async (req, resp) => {
     try {
@@ -75,14 +71,12 @@ ConsGetRouter.get('/', async (req, resp) => {
     }
 })
 
-
 const ConsultantDeleteRouter = express.Router()
  ConsultantDeleteRouter.delete('/:id', async (req, resp) => {
     const Consultant = await ConsDetails.findById(req.params.id);
     if (!Consultant) {
         return resp.status(404).send('Product not found');
     }
-
     const result = await ConsDetails.deleteOne({ _id: req.params.id });
     resp.send(result);
 

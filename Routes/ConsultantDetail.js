@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 const { upload } = require('./middleware')
 const ConsultantPostRouter = express.Router()
-ConsultantPostRouter.post('/', upload.single('ConPhoto'), async (req, resp) => {
+ConsultantPostRouter.post('/', upload.single('image1'), async (req, resp) => {
     try {
       const {
         ConName,

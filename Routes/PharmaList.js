@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 const { upload } = require('./middleware')
 const EmployePostRouter = express.Router()
-EmployePostRouter.post('/', upload.single('TabPhoto'), async (req, resp) => {
+EmployePostRouter.post('/', upload.single('pharmaPhoto'), async (req, resp) => {
     try {
         const {
             brandName,

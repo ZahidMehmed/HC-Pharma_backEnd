@@ -1,8 +1,9 @@
 const express = require('express');
+require('./db/config')
 const app = express();
 const cors = require('cors');
-require('./db/config');
-const PORT = process.env.PORT || 350;
+jwt = require('jsonwebtoken');
+jwtKey = 'vcr@134'
 app.use(`/uploads`, express.static('./uploads'))
 app.use(express.json())
 app.use(cors())

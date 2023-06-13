@@ -14,8 +14,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
 // Routes
 const {
   EmployePostRouter,

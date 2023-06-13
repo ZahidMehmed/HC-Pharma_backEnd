@@ -1,19 +1,19 @@
 const express = require('express');
-require('./db/config')
 const app = express();
 const cors = require('cors');
-jwt = require('jsonwebtoken');
-jwtKey = 'vcr@134'
-app.use(`/uploads`, express.static('./uploads'))
-app.use(express.json())
-app.use(cors())
-// app.use(`/uploads`, express.static('./uploads'))
-app.use(function (request, response, next) {
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers",
-        "Origin, X-Rquested-With, Content-Type, Accept");
-    next();
+const bodyParser = require('body-parser');
+require('./db/config');
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 350;
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
 });
+
 // Routes
 const {
   EmployePostRouter,

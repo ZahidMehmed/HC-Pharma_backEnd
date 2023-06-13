@@ -8,9 +8,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 350;
 app.use((req, res, next) => {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers",
-      "Origin, X-Rquested-With, Content-Type, Accept");
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
 

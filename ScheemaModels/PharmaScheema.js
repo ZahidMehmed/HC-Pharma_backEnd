@@ -14,4 +14,4 @@ const pharmaSchema = new mongoose.Schema({
     Price: String,
 })
 
-module.exports = mongoose.model('PharmaStore', pharmaSchema)
+module.exports = mongoose.model('PharmaList', pharmaSchema)

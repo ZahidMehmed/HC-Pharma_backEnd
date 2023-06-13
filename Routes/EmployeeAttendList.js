@@ -8,7 +8,6 @@ const fs = require('fs');
 const CronJob = require('cron').CronJob;
 
 const moment = require('moment');
-
 const job = new CronJob('0 57 8 * * 1-6', async () => { // Exclude Sunday by using 1-6 for day of the week
     try {  
         console.log('Cron job started');

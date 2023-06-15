@@ -10,7 +10,7 @@ const ConsultantSchema = new mongoose.Schema({
   Password: String,
   Contact: String,
   SpecialList: String,
-  StartTme: String,
+  StartTime: String,
   EndTime: String,
   Description: String, // Corrected field name
   Qualifications: String,

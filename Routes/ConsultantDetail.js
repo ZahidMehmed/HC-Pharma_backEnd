@@ -40,7 +40,7 @@ ConsultantPostRouter.post('/', upload.single('image1'), async (req, resp) => {
         StartTime,
         Description, // Convert the array to a string
         Qualifications,
-         EndTime,
+        EndTime,
         Mon,
         Tue,
         Wed,
